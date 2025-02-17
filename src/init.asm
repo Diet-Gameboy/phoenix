@@ -73,7 +73,8 @@ smc_loader_jump:
 loader_table:
     ret                          ;0
     kjp(shop)                    ;1
-    jr level_loader \ nop \ nop  ;jp game_finished           ;1
+    ;jr level_loader \ nop \ nop  ;jp game_finished           ;1
+    jp game_finished \ nop       ;4 ;NOTE: Not sure why but the jump vector to the game_finished function was commented out, and jr level_loader was placed there instead? I put back the game_finished vector so the game shouldn't crash upon completion now.
     kjp(set_power)               ;7
     kjp(set_movetype)            ;10
     kjp(set_movedata)            ;13
